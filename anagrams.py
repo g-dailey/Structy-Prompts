@@ -13,7 +13,6 @@ def anagrams (s1, s2):
   obj1 = {}
   obj2 = {}
 
-
   if len(s1) != len(s2):
     return False
 
