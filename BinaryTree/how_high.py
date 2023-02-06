@@ -36,11 +36,32 @@ class Node:
     self.left = None
     self.right = None
 
-def how_high(node):
+def how_high(node, depth=0):
+
   if node is None:
     return -1
+  max_depth = float('-inf')
+  max_depth = max(max_depth, depth)
 
-  right_path = how_high(node.right)
-  left_path = how_high(node.left)
 
-  return 1 + max(right_path, left_path)
+  right_depth = how_high(node.right, depth+1)
+  left_depth = how_high(node.left, depth+1)
+
+  return max(max_depth, right_depth, left_depth)
+
+a = Node('a')
+b = Node('b')
+c = Node('c')
+d = Node('d')
+e = Node('e')
+f = Node('f')
+g = Node('g')
+
+a.left = b
+a.right = c
+b.left = d
+b.right = e
+c.right = f
+f.right = g
+
+print(how_high(a, 0))
