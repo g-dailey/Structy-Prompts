@@ -40,9 +40,9 @@ def how_high(node, depth=0):
 
   if node is None:
     return -1
+
   max_depth = float('-inf')
   max_depth = max(max_depth, depth)
-
 
   right_depth = how_high(node.right, depth+1)
   left_depth = how_high(node.left, depth+1)
