@@ -1,6 +1,7 @@
 '''
 bottom right value
-Write a function, bottom_right_value, that takes in the root of a binary tree. The function should return the right-most value in the bottom-most level of the tree.
+Write a function, bottom_right_value, that takes in the root of a binary tree.
+The function should return the right-most value in the bottom-most level of the tree.
 
 You may assume that the input tree is non-empty.
 
@@ -36,9 +37,9 @@ class Node:
 from collections import deque
 
 def bottom_right_value(root):
+
   queue = deque([root])
 
-  current = None
   while queue:
     current = queue.popleft()
 
@@ -46,5 +47,23 @@ def bottom_right_value(root):
       queue.append(current.left)
     if current.right:
       queue.append(current.right)
+      value = current.right.val
 
-  return current.val
+  return value
+
+a = Node(3)
+b = Node(11)
+c = Node(10)
+d = Node(4)
+e = Node(-2)
+f = Node(19)
+g = Node(32)
+
+a.left = b
+a.right = c
+b.left = d
+b.right = e
+e.right = g
+c.right = f
+
+print(bottom_right_value(a))
